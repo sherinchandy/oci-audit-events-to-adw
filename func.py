@@ -23,7 +23,7 @@ def handler(ctx, data: io.BytesIO = None):
         cursor = conn.cursor()
         
         SQL = """begin
-          DBMS_CLOUD.COPY_DATA(table_name =>'JSON_GZIP_TAB1',
+          DBMS_CLOUD.COPY_DATA(table_name =>'AUDIT_EVENT_JSON_TAB1',
           credential_name =>'OBJ_STOR_CRED',
           file_uri_list =>:ObjStorURL, 
           format => json_object('compression' value 'gzip'), 
