@@ -1,0 +1,2 @@
+fdk
+cx_Oracle
