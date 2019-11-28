@@ -1,15 +1,19 @@
 # oci-audit-events-to-adw
 Automate loading of OCI Audit event exported logs to ADW 
 
-https://docs.cloud.oracle.com/iaas/Content/Audit/Concepts/bulkexport.htm
+You can enable Audit event log bulk export in your OCI tenancy by following:https://docs.cloud.oracle.com/iaas/Content/Audit/Concepts/bulkexport.htm
+
+Once the Audit event bulk export is enabled, the logs are exported to OCI Object Storage buckets. There will be buckets created for Audit events exported from each compartment. The bucket names has the prefix format "oci-logs.\_audit", we are using this prefix as a filter parameter in OCI Events to trigger an event whenever an Audit events log file is exported to these Object Storage buckets.
 
 Steps:
 =====
 1. Create an ADW instance(if doesn't exists one)and configure access to it as mentioned in: https://oracle.github.io/learning-library/workshops/journey4-adwc/?page=LabGuide1.md
 
-2. Connect to ADW and create a table. Ex: CREATE TABLE AUDIT_EVENT_JSON_TAB1 (json_document blob); 
+2. Connect to ADW and create a table as mentioned in: https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6371
+   
+    Ex: CREATE TABLE AUDIT_EVENT_JSON_TAB1 (json_document blob); 
 
-2. Create credentials in ADW to access OCI Object Storage as mentioned in: https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbms-cloud.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A
+3. Create credentials in ADW to access OCI Object Storage as mentioned in: https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbms-cloud.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A
    
    Ex: 
    begin
@@ -20,5 +24,7 @@ Steps:
    );
    end;
   /
+  
+4. Make sure the Object S
 
-3. Create Event rule in Event service to 
+4. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding 
