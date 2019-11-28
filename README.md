@@ -25,6 +25,6 @@ Steps:
    end;
   /
   
-4. Make sure the Object S
+4. Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
-4. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding 
+. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. 
