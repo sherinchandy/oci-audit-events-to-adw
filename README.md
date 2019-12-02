@@ -25,15 +25,21 @@ Steps:
    end;
   /
   
-4. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
+4. Setup your tenancy for OCI Function development and configure your local PC/Laptop/VM for OCI Function development by following: 
+https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringtenancies.htm
+https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringclient.htm
+  
+5. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
 
-5. Edit the "func.py" file and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
+6. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
 
 Ex:
 region = "us-phoenix-1"
 conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
 
-6. 
+6. Edit the file "func.yaml" and specify the your preferred name for the OCI Function, 
+   
+   Ex: name: objstor2adw
 
 Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
