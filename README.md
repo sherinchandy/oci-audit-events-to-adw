@@ -37,10 +37,10 @@ Ex:
 region = "us-phoenix-1"
 conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
 
-6. Edit the file "func.yaml" and specify the your preferred name for the OCI Function, 
+7. Edit the file "func.yaml" and specify your preferred name for the OCI Function, 
    
    Ex: name: objstor2adw
 
 Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
-. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. 
+8. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. We can use rhe event rule filters
