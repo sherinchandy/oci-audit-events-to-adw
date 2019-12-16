@@ -13,29 +13,23 @@ Steps:
 =====
 1. Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
-![](images/AuditBucketEnableEmit.png)
+ ![](images/AuditBucketEnableEmit.png)
 
-![](images/EnableEmit2.png)
+ ![](images/EnableEmit2.png)
 
 2. Create an ADW instance(if doesn't exists one)download the credentials and configure access to it as mentioned in: https://oracle.github.io/learning-library/workshops/journey4-adwc/?page=LabGuide1.md
 
 3. Connect to ADW and create a table as mentioned in: https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6371
    
-    Ex: CREATE TABLE AUDIT_EVENT_JSON_TAB1 (json_document blob); 
+  ![](images/TableCreate.png)
 
 4. Create credentials in ADW to access OCI Object Storage as mentioned in: https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbms-cloud.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A
    
-   Ex: 
-   begin
-   DBMS_CLOUD.create_credential(
-   credential_name => 'OBJ_STOR_CRED1',
-   username => 'user1@domain.com',
-   password => 'cH-yKq:xxxxxxx'
-   );
-   end;
-  /
+  ![](images/CredentialCreate.png)
   
-5. Create an Application of your desired name(Ex: ObjStor2ADW)from OCI console by following:https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatingapps.htm#console .
+5. Create an Application of your desired name(Ex: ObjStor2ADW)from OCI console by following:https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatingapps.htm#console 
+
+  ![](images/FuncAppCreate.png)
 
 6. Setup your tenancy for OCI Function development and configure your local PC/Laptop/VM for OCI Function development by  following:
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringtenancies.htm
@@ -43,13 +37,17 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
   
 7. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
 
+  ![](images/DownloadGitRepo.png)
+  
+  ![](images/UnzipWalltet.png)
+
 8. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
 
-Ex:
-region = "us-phoenix-1"
-conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
+  ![](images/UpdateFuncPY.png)
 
 9. Edit the file "func.yaml" and specify your preferred name(Ex: name: objstor2adw) for the OCI Function. 
+
+  ![](images/UpdateFuncYAML.png)
 
 10. Deploy the function and configure the environment parameters. This step should push the Function image to OCIR service and attach the function to the OCI Function service Application created in step 5.
 
