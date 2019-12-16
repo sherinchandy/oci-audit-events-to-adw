@@ -43,11 +43,16 @@ conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
 
 9. Edit the file "func.yaml" and specify your preferred name(Ex: name: objstor2adw) for the OCI Function. 
 
-10. Deploy the function. This step should push the Function image to OCIR service and attach the function to the OCI Function service Application created in step 5.
+10. Deploy the function and configure the environment parameters. This step should push the Function image to OCIR service and attach the function to the OCI Function service Application created in step 5.
 
 11. Make sure you are now able to see the Function created in previous step is appearing in the OCI Function service Application's console. 
 
 12. Create an Event rule in Event service to generate an event when Audit Event log file is bulk exported/uploaded to an Object Storage bucket. We can use "Object-Create" as event type, bucket name prifix "oci-logs.\_audit" as event attribute and the Function created in step 10 as Action item. Reference: https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsgetstarted.htm#Console
+
+13. Test and verify that Audit Events in bulk exported gzip files are loaded in the ADW table.
+
+14. Since the JSON data loaded into the table is of BLOB type, we can create a view on the table and run SQL queries to get insight into the Audit logs.
+
 
 
 
