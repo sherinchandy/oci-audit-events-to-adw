@@ -10,7 +10,7 @@ Audit Event Bulk Export Buckets
 Audit Event Log Files
 ![](images/AuditLogFiles.png)
 
-===============================================================================================================================
+==================================================================================
 Steps:
 
 1. Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
