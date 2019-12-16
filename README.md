@@ -5,13 +5,13 @@ You can enable Audit event log bulk export in your OCI tenancy by following:http
 
 Once the Audit event bulk export is enabled, the logs are exported to OCI Object Storage buckets. There will be buckets created for Audit events exported from each compartment. The bucket names has the prefix format "oci-logs.\_audit", we are using this prefix as a filter parameter in OCI Events to trigger an event whenever an Audit events log file is exported to these Object Storage buckets.
 
-Audit Event Bulk Export Buckets
+**Audit Event Bulk Export Buckets**
 ![](images/AuditExportBuckets.png)
-Audit Event Log Files
+**Audit Event Log Files**
 ![](images/AuditLogFiles.png)
 
 
-Steps:
+**Steps:**
 
 1. Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
