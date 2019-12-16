@@ -18,7 +18,7 @@ Steps:
    Ex: 
    begin
    DBMS_CLOUD.create_credential(
-   credential_name => 'OBJ_STOR_CRED',
+   credential_name => 'OBJ_STOR_CRED1',
    username => 'user1@domain.com',
    password => 'cH-yKq:xxxxxxx'
    );
@@ -43,4 +43,5 @@ conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
 
 Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
-8. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. We can use rhe event rule filters
+8. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. We can use "Object-Create" as event type and bucket name prifix format "oci-logs.\_audit" as event attribute. Reference: https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsgetstarted.htm#Console
+
