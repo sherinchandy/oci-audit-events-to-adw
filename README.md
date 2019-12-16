@@ -7,13 +7,15 @@ Once the Audit event bulk export is enabled, the logs are exported to OCI Object
 
 Steps:
 =====
-1. Create an ADW instance(if doesn't exists one)download the credentials and configure access to it as mentioned in: https://oracle.github.io/learning-library/workshops/journey4-adwc/?page=LabGuide1.md
+1. Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
 
-2. Connect to ADW and create a table as mentioned in: https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6371
+2. Create an ADW instance(if doesn't exists one)download the credentials and configure access to it as mentioned in: https://oracle.github.io/learning-library/workshops/journey4-adwc/?page=LabGuide1.md
+
+3. Connect to ADW and create a table as mentioned in: https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6371
    
     Ex: CREATE TABLE AUDIT_EVENT_JSON_TAB1 (json_document blob); 
 
-3. Create credentials in ADW to access OCI Object Storage as mentioned in: https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbms-cloud.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A
+4. Create credentials in ADW to access OCI Object Storage as mentioned in: https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbms-cloud.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A
    
    Ex: 
    begin
@@ -25,23 +27,27 @@ Steps:
    end;
   /
   
-4. Setup your tenancy for OCI Function development and configure your local PC/Laptop/VM for OCI Function development by following: 
+5. Create an Application of your desired name(Ex: ObjStor2ADW)from OCI console by following:https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatingapps.htm#console .
+
+6. Setup your tenancy for OCI Function development and configure your local PC/Laptop/VM for OCI Function development by  following:
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringtenancies.htm
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringclient.htm
   
-5. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
+7. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
 
-6. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
+8. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
 
 Ex:
 region = "us-phoenix-1"
 conn = cx_Oracle.connect("ADMIN","Password123","auditdb_medium")
 
-7. Edit the file "func.yaml" and specify your preferred name for the OCI Function, 
-   
-   Ex: name: objstor2adw
+9. Edit the file "func.yaml" and specify your preferred name(Ex: name: objstor2adw) for the OCI Function. 
 
-Make sure the Object Storage buckets has "Emit Object Events" enabled. Reference: https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm#usingconsole
+10. Deploy the function. This step should push the Function image to OCIR service and attach the function to the OCI Function service Application created in step 5.
 
-8. Create Event rule in Event service to trigger an OCI Function whenever an Audit events log is exported/uploaded to corresponding. We can use "Object-Create" as event type and bucket name prifix format "oci-logs.\_audit" as event attribute. Reference: https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsgetstarted.htm#Console
+11. Make sure you are now able to see the Function created in previous step is appearing in the OCI Function service Application's console. 
+
+12. Create an Event rule in Event service to generate an event when Audit Event log file is bulk exported/uploaded to an Object Storage bucket. We can use "Object-Create" as event type, bucket name prifix "oci-logs.\_audit" as event attribute and the Function created in step 10 as Action item. Reference: https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsgetstarted.htm#Console
+
+
 
