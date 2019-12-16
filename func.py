@@ -24,7 +24,7 @@ def handler(ctx, data: io.BytesIO = None):
         
         SQL = """begin
           DBMS_CLOUD.COPY_DATA(table_name =>'AUDIT_EVENT_JSON_TAB1',
-          credential_name =>'OBJ_STOR_CRED',
+          credential_name =>'OBJ_STOR_CRED1',
           file_uri_list =>:ObjStorURL, 
           format => json_object('compression' value 'gzip'), 
           field_list => 'json_document CHAR(50000)'
