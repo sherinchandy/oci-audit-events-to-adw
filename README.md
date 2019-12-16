@@ -41,7 +41,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
   
   ![](images/UnzipWalltet.png)
 
-8. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update user name, password, DB service name from your ADW environment.
+8. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update DB user name, password and DB service name from your ADW environment.
 
   ![](images/UpdateFuncPY.png)
 
