@@ -1,9 +1,22 @@
-# oci-audit-events-to-adw
-Automate loading of OCI Audit event exported logs to ADW 
+# Automate Loading of Bulk Exported OCI Audit Event Logs to ADW.
 
-You can enable Audit event log bulk export in your OCI tenancy by following:https://docs.cloud.oracle.com/iaas/Content/Audit/Concepts/bulkexport.htm
+This documentation shows the step by step procedure to automate the loading of OCI Audit events from gzip files exported to OCI OBject Storage buckets by OCI Audit service bulk export feature to an OCI ADW table. Once the Audit events are loaded into ADW, we can run SQL queries to generate Audit reports easily based on the requirement.
 
-Once the Audit event bulk export is enabled, the logs are exported to OCI Object Storage buckets. There will be buckets created for Audit events exported from each compartment. The bucket names has the prefix format "oci-logs.\_audit", we are using this prefix as a filter parameter in OCI Events to trigger an event whenever an Audit events log file is exported to these Object Storage buckets.
+We are leveraging below OCI services to accomplish the task mentioned above.
+
+OCI Audit 
+OCI Object Storage 
+OCI Events
+OCI Function
+OCI Autonomous Database(ADW)
+
+# High Level Architecure
+
+![](images/Audit2ADW_Architecture.png)
+
+You can enable OCI Audit event log bulk export in your OCI tenancy by following:https://docs.cloud.oracle.com/iaas/Content/Audit/Concepts/bulkexport.htm
+
+Once the Audit event bulk export is enabled, the Audit event logs are exported to OCI Object Storage buckets as gzip files. Separate Object Storage buckets are created for Audit events exported from each compartment. The bucket names has the prefix format "oci-logs.\_audit", we can use this prefix as a filter parameter in OCI Events service to trigger an event whenever an Audit events log file is exported to these Object Storage buckets.
 
 **Audit Event Bulk Export Buckets**
 ![](images/AuditExportBuckets.png)
@@ -75,6 +88,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
 
   ![](images/QueryViewSQL.png)
 
+In additional to the example SQL query shown above, we can run any SQL query based on the requirement and visualize using any tools of choice.
 
 
 
