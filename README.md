@@ -10,7 +10,7 @@ OCI Events
 OCI Function
 OCI Autonomous Database(ADW)
 
-# High Level Architecure
+## High Level Architecure
 
 ![](images/Audit2ADW_Architecture.png)
 
