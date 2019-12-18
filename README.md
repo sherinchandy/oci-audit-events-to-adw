@@ -79,7 +79,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
 
   ![](images/TableDataCheck.png)
 
-14. Since the JSON data loaded into the table is of BLOB type, we can create a view on the table and run SQL queries to get insight into the Audit logs. In addition to the view created in below example, we can create views using any of the key names as the view column name from the Audit event JSON document.
+14. Since the JSON data loaded into the table is of BLOB type, we can create a view on the table and run SQL queries to get insight into the Audit logs. In addition to the view created in below example, we can create views using any of the key names as the view's column name from the Audit event JSON document. Refer: https://docs.cloud.oracle.com/iaas/Content/Audit/Reference/logeventreference.htm for details about Audit event contents.
 
   ![](images/CreateView.png)
 
