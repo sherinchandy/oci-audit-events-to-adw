@@ -2,9 +2,9 @@
 
 This documentation shows the step by step procedure to automate the loading of OCI Audit events from gzip files exported to OCI OBject Storage buckets by OCI Audit service bulk export feature to an OCI ADW table. Once the Audit events are loaded into ADW, we can run SQL queries to generate Audit reports easily based on the requirement.
 
-We are leveraging OCI services to accomplish the task mentioned above. \
+We are leveraging OCI services to accomplish the task mentioned above.
 
-OCI Audit 
+OCI Audit \n
 OCI Object Storage 
 OCI Events
 OCI Function
