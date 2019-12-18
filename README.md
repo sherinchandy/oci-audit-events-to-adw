@@ -45,7 +45,7 @@ Once the Audit event bulk export is enabled, the Audit event logs are exported t
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringtenancies.htm
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringclient.htm
   
-7. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git)git repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
+7. Clone/Download this(https://github.com/sherinchandy/oci-audit-events-to-adw.git) github repo into your local directory. Unzip the ADW credentials downloaded in step 1 into the same directory.
 
   ![](images/DownloadGitRepo.png)
   
