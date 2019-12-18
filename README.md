@@ -30,6 +30,7 @@ Once the Audit event bulk export is enabled, the Audit event logs are exported t
 
  ![](images/AuditBucketEnableEmit.png)
 
+
  ![](images/EnableEmit2.png)
 
 2. Create an ADW instance(if doesn't exists one)download the credentials and configure access to it as mentioned in: https://oracle.github.io/learning-library/workshops/journey4-adwc/?page=LabGuide1.md
@@ -54,6 +55,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
 
   ![](images/DownloadGitRepo.png)
   
+  
   ![](images/UnzipWalltet.png)
 
 8. Edit the file "func.py" and update it with the OCI region where you are enabling the Audit log bulk export. Also update DB user name, password and DB service name from your ADW environment.
@@ -67,6 +69,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
 10. Deploy the function and configure the function environment variables are set(Ex: TNS_ADMIN). This step should push the Function image to OCIR service and attach the function to the OCI Function service Application created in step 5.
  
   ![](images/FunctionDeploy.png)
+  
   
   ![](images/UpdateFuncTNSADMIN.png)
 
@@ -85,6 +88,7 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsconfiguringc
 14. Since the JSON data loaded into the table is of BLOB type, we can create a view on the table and run SQL queries to get insight into the Audit logs.
 
   ![](images/CreateView.png)
+
 
   ![](images/QueryViewSQL.png)
 
