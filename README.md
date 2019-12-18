@@ -4,7 +4,7 @@ This documentation shows the step by step procedure to automate the loading of O
 
 We are leveraging OCI services to accomplish the task mentioned above.
 
-OCI Audit \n
+OCI Audit --
 OCI Object Storage 
 OCI Events
 OCI Function
