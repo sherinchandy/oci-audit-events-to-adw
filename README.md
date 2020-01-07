@@ -1,4 +1,4 @@
-# Automate Loading of Bulk Exported OCI Audit Event Logs to ADW.
+# Serverless Automation of Loading Bulk Exported OCI Audit Event Logs to ADW.
 
 This documentation shows the step by step procedure to automate the loading of OCI Audit events from gzip files exported to OCI OBject Storage buckets by OCI Audit service bulk export feature to an OCI ADW table. Once the Audit events are loaded into ADW, we can run SQL queries to generate Audit reports easily based on the requirement.
 
